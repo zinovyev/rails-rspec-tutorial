@@ -11,6 +11,21 @@
     </div>
   <% end %>
 
+  <div>
+    <%= form.label :title %> 
+    <%= form.text_field :title, id: "article_title" %> 
+  </div>
+
+  <div>
+    <%= form.label :body %> 
+    <%= form.text_area :body, id: "article_body" %> 
+  </div>
+
+  <div>
+    <%= form.label :active %> 
+    <%= form.check_box :active, id: "article_active" %> 
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
