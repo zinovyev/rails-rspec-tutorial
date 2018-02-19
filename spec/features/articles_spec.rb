@@ -2,19 +2,23 @@ require 'rails_helper'
 
 RSpec.feature "Articles", type: :feature do
   context "Create new article" do
-    scenario "Should be successful" do
+    before(:each) do
       visit new_article_path
       within("form") do
         fill_in "Title", with: "Test title"
-        fill_in "Body", with: "Test body"
         check "Active"
       end
+    end
+
+    scenario "Should be successful" do
+      fill_in "Body", with: "Test body"
       click_button "Create Article"
       expect(page).to have_content("Article was successfully created")
     end
 
     scenario "Should fail" do
-
+      click_button "Create Article"
+      expect(page).to have_content("Body can't be blank")
     end
   end
 
