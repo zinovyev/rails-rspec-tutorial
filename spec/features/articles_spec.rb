@@ -46,6 +46,12 @@ RSpec.feature "Articles", type: :feature do
   end
 
   context "Remove existing article" do
-
+    let!(:article) { Article.create(title: "Test title", body: "Test content") }
+    scenario "remove article" do
+      visit articles_path
+      click_link "Destroy"
+      expect(page).to have_content("Article was successfully destroyed")
+      expect(Article.count).to eq(0)
+    end
   end
 end
