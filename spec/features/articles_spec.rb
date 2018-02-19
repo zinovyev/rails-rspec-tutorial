@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "Articles", type: :feature do
   context "Create new article" do
@@ -49,7 +49,10 @@ RSpec.feature "Articles", type: :feature do
     let!(:article) { Article.create(title: "Test title", body: "Test content") }
     scenario "remove article" do
       visit articles_path
-      click_link "Destroy"
+      expect(Article.count).to eq(1)
+      accept_alert do
+        click_link "Destroy"
+      end
       expect(page).to have_content("Article was successfully destroyed")
       expect(Article.count).to eq(0)
     end
