@@ -36,7 +36,7 @@ require "rails_helper"
 
 RSpec.describe "hello spec" do
   describe "math" do
-    expect(6 * 7).to eq(42)
+    expect(6 * 7).to eq(43)
   end
 end
 
